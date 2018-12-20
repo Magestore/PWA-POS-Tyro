@@ -33,7 +33,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager
-    ){
+    ) {
         $this->_storeManager = $storeManager;
         $this->_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         parent::__construct($context);
@@ -44,7 +44,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @return \Magento\Store\Api\Data\StoreInterface
      */
-    public function getStore(){
+    public function getStore()
+    {
         return $this->_storeManager->getStore();
     }
 
@@ -54,18 +55,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param string $path
      * @return string
      */
-    public function getStoreConfig($path){
+    public function getStoreConfig($path)
+    {
         return $this->scopeConfig->getValue($path, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     /**
      * @return array
      */
-    public function getTyroConfig() {
-        $configData = array();
-        $configItems = array(
+    public function getTyroConfig()
+    {
+        $configData = [];
+        $configItems = [
             'enable',
-        );
+        ];
         foreach ($configItems as $configItem) {
             $configData[$configItem] = $this->getStoreConfig('webpos/payment/tyro/' . $configItem);
         }
@@ -75,7 +78,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @return bool
      */
-    public function isEnableTyro(){
+    public function isEnableTyro()
+    {
         $enable = $this->getStoreConfig('webpos/payment/tyro/enable');
         return ($enable == 1)?true:false;
     }
@@ -83,21 +87,24 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @return string
      */
-    public function getPaymentTitle(){
+    public function getPaymentTitle()
+    {
         return $this->getStoreConfig('webpos/payment/tyro/title');
     }
 
     /**
      * @return string
      */
-    public function getApiKey(){
+    public function getApiKey()
+    {
         return $this->getStoreConfig('webpos/payment/tyro/api_key');
     }
 
     /**
      * @return string
      */
-    public function getMerchantId(){
+    public function getMerchantId()
+    {
         return $this->getStoreConfig('webpos/payment/tyro/merchant_id');
     }
 
@@ -105,9 +112,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @return string
      */
-    public function getMode(){
+    public function getMode()
+    {
         return $this->getStoreConfig('webpos/payment/tyro/mode');
     }
-
-
 }

@@ -30,7 +30,7 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magestore\WebposTyro\Helper\Data $helper
-    ){
+    ) {
         parent::__construct($context);
         $this->helper = $helper;
         $this->resultFactory = $context->getResultFactory();
@@ -40,7 +40,8 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
      * @param $data
      * @return mixed
      */
-    public function createJsonResult($data){
+    public function createJsonResult($data)
+    {
         $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
         return $resultJson->setData($data);
     }
